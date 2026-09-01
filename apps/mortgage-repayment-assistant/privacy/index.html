@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mortgage Repayment Assistant プライバシーポリシー</title>
+  <meta name="description" content="iOSアプリ「Mortgage Repayment Assistant」のプライバシーポリシーです。Firebase、AI診断（OpenAI）、広告、App Store課金に関する情報の取扱いについて説明します。">
+
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <main class="wrap">
+    <a class="backlink" href="../">← Mortgage Repayment Assistant トップへ戻る</a>
+
+    <h1>Mortgage Repayment Assistant プライバシーポリシー</h1>
+    <p class="updated">制定日：2026年9月1日</p>
+
+    <p>
+      Amol Apps（以下「開発者」といいます）は、iOS向けアプリ「Mortgage Repayment Assistant」
+      （以下「本アプリ」といいます）における利用者情報の取扱いについて、
+      以下のとおりプライバシーポリシー（以下「本ポリシー」といいます）を定めます。
+    </p>
+
+    <h2>1. 運営者</h2>
+    <p>
+      本アプリの運営者は Amol Apps です。
+    </p>
+
+    <h2>2. 適用範囲</h2>
+    <p>
+      本ポリシーは、本アプリの利用、ならびに本アプリが提供する
+      住宅ローンシミュレーション、SafetyScore、AI診断、広告表示、
+      Premiumサブスクリプションおよびアプリ内課金（AIチケットを含みます）に関連する
+      情報の取扱いに適用されます。
+    </p>
+
+    <h2>3. 取得・利用する情報</h2>
+
+    <h3>3-1. アカウント情報について</h3>
+    <p>
+      本アプリは、Firebase Authenticationの匿名認証（Anonymous Authentication）を使用しています。
+      利用者の氏名、メールアドレス、電話番号等をアプリ独自に取得することはありません。
+      匿名認証により発行されるFirebase UID（識別子）を、本アプリ内部での
+      利用者識別のために使用します。
+    </p>
+
+    <h3>3-2. 住宅ローンシミュレーションの入力情報</h3>
+    <p>
+      本アプリでは、返済額や返済期間等のシミュレーションを行うために、
+      借入額、金利、返済期間、返済方式、ボーナス返済情報、世帯年収、年齢、
+      他ローンの月額等の情報の入力を求める場合があります。
+    </p>
+    <p class="note">
+      これらの入力値そのものは、通常の計算結果を保存する目的でCloud Firestoreへ
+      永続的に保存するものではありません。AI診断機能を利用した場合の情報の送信については、
+      本ポリシー「5. AI診断機能とOpenAIの利用」をご確認ください。
+    </p>
+
+    <h2>4. Firebaseの利用</h2>
+    <p>
+      本アプリは、Google社が提供するFirebaseの以下のサービスを利用しています。
+    </p>
+    <ul>
+      <li>Firebase Core</li>
+      <li>Firebase Authentication（匿名認証）</li>
+      <li>Cloud Firestore</li>
+      <li>Cloud Functions</li>
+      <li>Firebase App Check</li>
+    </ul>
+    <p>
+      Cloud Firestoreには、主に次のような、本アプリの機能提供に必要な管理情報を保存しています。
+    </p>
+    <ul>
+      <li>Premiumサブスクリプションの状態</li>
+      <li>AIチケットの残高</li>
+      <li>AI診断の利用回数</li>
+      <li>AIリクエストに関する管理情報</li>
+      <li>Rewarded Ad Token（リワード広告視聴）に関する管理情報</li>
+      <li>AI診断結果のキャッシュ</li>
+      <li>購入トランザクションに関する管理情報</li>
+    </ul>
+    <p>
+      Cloud FirestoreのSecurity Rulesにより、クライアント（アプリ）から
+      これらのデータへ直接読み書きすることはできない設定としており、
+      Cloud Functionsを経由した処理のみを許可しています。
+    </p>
+
+    <h2>5. AI診断機能とOpenAIの利用</h2>
+    <p>
+      本アプリのAI診断機能は、OpenAI社が提供するAPI（Responses API）を利用しています。
+      AI診断を利用した場合、診断に必要な範囲で、次の情報がOpenAI社に送信される場合があります。
+    </p>
+    <ul>
+      <li>年齢</li>
+      <li>世帯年収</li>
+      <li>借入額</li>
+      <li>金利</li>
+      <li>返済期間</li>
+      <li>返済方式</li>
+      <li>ボーナス返済情報</li>
+      <li>他ローンの月額</li>
+      <li>住宅ローンの計算結果</li>
+      <li>SafetyScoreに関連する情報</li>
+    </ul>
+    <p>
+      一方で、次の情報はOpenAI社へ送信していません。
+    </p>
+    <ul>
+      <li>Firebase UID</li>
+      <li>App Storeの購入トランザクション情報およびJWS</li>
+      <li>AIチケットの残高</li>
+      <li>Premium購入情報</li>
+      <li>Rewarded Ad Token情報</li>
+      <li>広告に関する情報</li>
+    </ul>
+    <p>
+      本アプリでは、OpenAIのResponses APIを呼び出す際に <code>store: false</code>
+      オプションを使用しています。これは、Responses API側でリクエスト内容を
+      アプリケーションの状態として保存させないようにする設定であり、
+      OpenAI社が安全性の確認や不正利用の監視等の目的で行うデータの取扱いまで
+      完全に無効化するものではありません。OpenAI APIへ送信されたデータの利用・保持は、
+      OpenAI社が定めるポリシーに従います。また、開発者のOpenAI Platform組織設定では、
+      モデルへのフィードバック共有、評価・ファインチューニング目的でのデータ共有、
+      入出力の共有はいずれも無効化しています。
+    </p>
+    <p class="note">
+      OpenAI APIへ送信されたデータは、OpenAI APIの一般的な取り扱いとして、
+      原則モデルの学習目的には使用されません。ただし、開発者は「OpenAI社が
+      データを一切保持しない」「送信データが即時に削除される」「ログの保存が完全に
+      無効になっている」ことを保証するものではなく、OpenAI社側でのデータの取扱いの詳細については、
+      OpenAI社が公開するプライバシーポリシー等をあわせてご確認ください。
+    </p>
+
+    <h2>6. 広告について</h2>
+    <p>
+      本アプリでは、Google社が提供する広告SDK（google_mobile_ads / AdMob）を利用し、
+      バナー広告およびリワード広告を表示しています。
+    </p>
+    <ul>
+      <li>Premiumサブスクリプションをご利用の場合、広告は表示されません。</li>
+      <li>無料でAI診断を利用する場合の条件として、リワード広告の視聴を求める場合があります。</li>
+    </ul>
+    <p>
+      広告SDKは、Google社のポリシーに基づき、広告配信に関連する情報を取得する場合があります。
+      本アプリの初回リリース時点ではApp Tracking Transparency（ATT）によるトラッキング許諾は
+      要求していません。今後、Google社が提供するUser Messaging Platform（UMP）の導入を予定しています。
+    </p>
+    <p class="note">
+      開発者は、広告SDKが情報を一切収集しないこと、またはトラッキングを一切行わないことを
+      保証するものではありません。広告SDKにおける情報の取扱いの詳細については、
+      Google社が公開するポリシーをご確認ください。
+    </p>
+
+    <h2>7. App Store課金について</h2>
+    <p>
+      本アプリのPremiumサブスクリプションおよびAIチケット（消費型アプリ内課金）は、
+      Apple社が提供するApp StoreのIn-App Purchaseを通じて提供しています。
+    </p>
+    <p>
+      決済処理自体はApple社が行っており、開発者がクレジットカード番号等の
+      決済情報を直接取得・保存することはありません。
+      購入内容の確認、購入の復元、および二重付与の防止等の目的で、
+      購入トランザクションに関する内部管理情報をFirebase（Cloud Firestore /
+      Cloud Functions）側で管理しています。
+    </p>
+
+    <h2>8. データの保存・保持期間</h2>
+    <p>
+      Cloud Firestore上の「AI診断結果のキャッシュ」については、
+      作成から90日を保持期限とするTTL（自動削除）を設定しています。
+    </p>
+    <p>
+      その他の管理情報（Rewarded Ad Token管理情報、AIリクエスト管理情報、
+      AI利用回数、Premium状態等のユーザー管理情報、購入トランザクション管理情報）については、
+      本ポリシー作成時点でTTLによる自動削除は設定しておらず、
+      本アプリの機能提供および不正利用防止等に必要な範囲で保持します。
+      保持期間は今後変更となる場合があります。
+    </p>
+    <p>
+      なお、Firebase／Google Cloudの基盤側では、運用ログとして
+      「_Default」ログが30日間、Google Cloudの必須監査ログである「_Required」ログが
+      400日間保持される設定となっています。これらはGoogle Cloudの
+      インフラストラクチャ運用に関するログであり、本アプリが独自に記録する
+      利用者データとは異なります。
+    </p>
+
+    <h2>9. データに関するお問い合わせ・削除依頼・同意の撤回</h2>
+    <p>
+      ご自身に関する情報の取扱いについてのお問い合わせ、データの削除に関するご依頼、
+      AI診断機能利用時の情報送信への同意の撤回に関するお問い合わせは、
+      下記のメールアドレスまでご連絡ください。
+    </p>
+    <p>
+      <a href="mailto:amol.apps.1224@gmail.com">amol.apps.1224@gmail.com</a>
+    </p>
+    <p class="note">
+      現時点で、本アプリには利用者ご自身の操作によりFirebase UIDに紐づくすべてのデータを
+      即時に完全削除できる機能は実装されていません。上記窓口へご連絡いただいた場合、
+      開発者にて可能な範囲での削除対応を検討しますが、購入履歴、二重付与防止、
+      不正利用防止、システムの運用・法令上の対応等のために、削除できない情報や
+      一定期間保持が必要な情報が含まれる場合があります。お問い合わせいただいた場合でも、
+      すべての情報が必ず即時に削除されることを保証するものではありません。
+    </p>
+    <p class="note">
+      AI診断機能の利用に伴う情報送信への同意を撤回されたい場合も、上記窓口までご連絡ください。
+      同意を撤回された場合、以後のAI診断機能のご利用に影響することがありますが、
+      撤回時点までに送信済みの情報の処理が遡って取り消されること、または
+      既に保存されている情報がすべて即時に削除されることを意味するものではありません。
+    </p>
+
+    <h2>10. セキュリティ</h2>
+    <p>
+      本アプリでは、Firebase App Checkにより、正当なアプリからのリクエストであることを
+      検証しています。また、Cloud Firestoreのデータへはクライアントから直接
+      アクセスできないよう制限し、Cloud Functionsを経由した処理のみを許可することで、
+      不正なアクセスの防止に努めています。
+    </p>
+    <p>
+      ただし、通信環境やご利用の端末の状態等により、情報の安全性を完全に
+      保証することはできません。
+    </p>
+
+    <h2>11. 第三者サービス</h2>
+    <p>
+      本アプリは、以下の第三者サービスを利用しています。
+    </p>
+    <ul>
+      <li>Google Firebase（Google LLC）</li>
+      <li>OpenAI API（OpenAI, L.L.C.）</li>
+      <li>Google Mobile Ads / AdMob（Google LLC）</li>
+      <li>App Store In-App Purchase（Apple Inc.）</li>
+    </ul>
+    <p>
+      これら第三者サービスに送信された情報は、各社が定めるプライバシーポリシーおよび
+      利用条件等に基づいて取り扱われます。開発者は、これら第三者事業者の内部での
+      データの取扱いについて完全に保証するものではなく、詳細については各社が公開する
+      プライバシーポリシー等をご確認ください。
+    </p>
+
+    <h2>12. お問い合わせ</h2>
+    <p>
+      本アプリまたは本ポリシーに関するお問い合わせは、次のサポートページ、
+      または下記のメールアドレスからご連絡ください。
+    </p>
+    <p>
+      <a href="../support/">Mortgage Repayment Assistant サポートページ</a><br>
+      <a href="mailto:amol.apps.1224@gmail.com">amol.apps.1224@gmail.com</a>
+    </p>
+
+    <h2>13. プライバシーポリシーの変更</h2>
+    <p>
+      開発者は、法令の変更、本アプリの機能追加・変更、利用する外部サービスの変更等に応じて、
+      本ポリシーを変更することがあります。重要な変更がある場合は、本ページまたは
+      本アプリ内でお知らせします。変更後のポリシーは、本ページに掲載した時点から効力を生じます。
+    </p>
+
+    <footer>
+      <p>運営者：Amol Apps</p>
+      <p>対象アプリ：Mortgage Repayment Assistant</p>
+      <p>制定日：2026年9月1日</p>
+    </footer>
+  </main>
+</body>
+</html>
